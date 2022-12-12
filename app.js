@@ -12,6 +12,8 @@ const welcome = (req, res) => {
   res.send("Welcome to my favourite movie list");
 };
 
+const { validateMovie } = require("./validators.js");
+
 app.get("/", welcome);
 
 const movieHandlers = require("./movieHandlers");
@@ -30,6 +32,8 @@ app.post("/api/users", userHandlers.postUser);
 app.put("/api/movies/:id", movieHandlers.updateMovie);
 
 app.put("/api/users/:id", userHandlers.updateUser);
+
+app.post("/api/movies", validateMovie, movieHandlers.postMovie);
 
 app.listen(port, (err) => {
   if (err) {
