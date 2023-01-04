@@ -1,5 +1,3 @@
-
-
 const database = require("./database");
 
 const getMovies = (req, res) => {
